@@ -48,7 +48,7 @@ public class XProcessor : MonoBehaviour
             anim.SetBool(Animator.StringToHash("Running"), false);
         }
 
-        if (Input.GetKey(KeyCode.X) && maxJump!=0 && !jumpLock)
+        if (Input.GetKeyDown(KeyCode.X) && maxJump!=0 && !jumpLock)
         {
             anim.SetTrigger(Animator.StringToHash("Jump"));
 
@@ -56,10 +56,8 @@ public class XProcessor : MonoBehaviour
             {
                 rigid.velocity = new Vector2(rigid.velocity.x, 0);
             }
-
-            rigid.AddForce(new Vector2(0, jumpSpeed));
-
             isOnGround = false;
+            rigid.AddForce(new Vector2(0, jumpSpeed));
             maxJump -= 1;
             jumpLock = true;
         }
